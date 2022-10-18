@@ -5,6 +5,7 @@ import { TextField } from "@mui/material";
 import { Stack } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AccessibleIcon from "@mui/icons-material/Accessible";
+import PlusOneIcon from "@mui/icons-material/PlusOne";
 import { Snackbar } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -83,7 +84,7 @@ function Todolist() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></TextField>
-        <Button startIcon={<AccessibleIcon />} onClick={addTodo}>
+        <Button startIcon={<PlusOneIcon />} onClick={addTodo}>
           add
         </Button>
         <Snackbar
