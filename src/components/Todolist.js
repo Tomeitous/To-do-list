@@ -6,10 +6,13 @@ import { Stack } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AccessibleIcon from "@mui/icons-material/Accessible";
 import { Snackbar } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 function Todolist() {
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(null);
   const [priority, setPriority] = useState("");
   const [todos, setTodos] = useState([]);
   const [open, setOpen] = useState(false);
@@ -35,6 +38,7 @@ function Todolist() {
   ]);
 
   const addTodo = () => {
+    console.log(date);
     setTodos([
       { date: date, description: description, priority: priority },
       ...todos,
@@ -64,12 +68,15 @@ function Todolist() {
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
         ></TextField>
-        <TextField
-          variant="outlined"
-          label="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        ></TextField>
+
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            label="date"
+            value={date}
+            onChange={(e) => setDate(e)}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </LocalizationProvider>
         <TextField
           variant="outlined"
           placeholder="description"

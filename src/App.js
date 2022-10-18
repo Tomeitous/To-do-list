@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import "./components/React-Tabs";
 import Todolist from "./components/Todolist";
+import Todolista from "./components/Todolist_Alisa.js";
 import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
-import { Box, Tab, Tabs } from "@mui/material";
+import { Tab, Tabs } from "@mui/material";
 import { useState } from "react";
 
 function App() {
@@ -30,7 +30,11 @@ function App() {
           <Tab label="To do" />
         </Tabs>
       </AppBar>
-      {tabIndex === 0 && <Typography>Ostin nuget</Typography>}
+      {tabIndex === 0 && (
+        <Typography>
+          <Todolista></Todolista>
+        </Typography>
+      )}
       {tabIndex === 1 && <Todolist></Todolist>}
     </div>
   );
